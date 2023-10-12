@@ -7,7 +7,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <button id="google-login-button">Login with Google</button>
     <div id="signinDiv"></div>
     <script>
         window.onload = function () {
@@ -19,17 +18,14 @@
             google.accounts.id.renderButton(document.getElementById("signinDiv"), {
                 theme: 'outline',
                 size: 'large',
-                click_listener: onClickHandler
+                click_listener: handleCredentialResponse
             });
+
             google.accounts.id.prompt();
         };
 
         function handleCredentialResponse(response){
             console.log(response)
-        }
-        
-        function onClickHandler(){
-            console.log("Sign in with Google button clicked...")
         }
   
     </script>
