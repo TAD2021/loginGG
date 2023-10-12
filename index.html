@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="signinDiv"></div>
+    <button onclick="handleLogout()" style="display: none;" id="logout-button">Logout</button>
     <p id="profile"></p>
     <script>
         window.onload = function () {
@@ -33,10 +34,21 @@
                 document.getElementById('profile').innerHTML = `
                     <h1>Your name is: ${user.name}</h1><br>
                     <h2>Your email is: ${user.email}</h2><br>
+                    <img src="${user.picture}"/><br>
                 `
+                document.getElementById('logout-button').style.display = "block"
+                document.getElementById('signinDiv').style.display = "none"
             }
         }
-  
+
+        function handleLogout() {
+            google.accounts.id.disableAutoSelect()
+            google.accounts.id.prompt()
+            document.getElementById('profile').innerHTML = ''
+            document.getElementById('logout-button').style.display = 'none'
+            document.getElementById('signinDiv').style.display = 'block'
+        }
+   
     </script>
 </body>
 </html>
