@@ -10,16 +10,16 @@
     <button id="google-login-button">Login with Google</button>
     <div id="signinDiv"></div>
     <script>
-        google.accounts.id.renderButton(document.getElementById("signinDiv"), {
-            theme: 'outline',
-            size: 'large',
-            click_listener: onClickHandler
-        });
-
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: '856955858662-9vs0151os9g1uni6pfmafe0h35ugnv94.apps.googleusercontent.com',
                 callback: handleCredentialResponse
+            });
+
+            google.accounts.id.renderButton(document.getElementById("signinDiv"), {
+                theme: 'outline',
+                size: 'large',
+                click_listener: onClickHandler
             });
             google.accounts.id.prompt();
         };
