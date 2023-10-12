@@ -12,7 +12,11 @@
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: '856955858662-9vs0151os9g1uni6pfmafe0h35ugnv94.apps.googleusercontent.com',
-                callback: handleCredentialResponse
+                callback: handleCredentialResponse,
+                auto_select: true,
+                ux_mode: 'popup',
+                prompt_parent_id: 'google-signin-button',
+                scopes: ['profile']
             });
         };
 
