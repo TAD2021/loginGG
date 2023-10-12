@@ -23,7 +23,9 @@
         };
 
         function handleCredentialResponse(response){
+            const responsePayload = decodeJwtResponse(response.credential);
             console.log(response)
+            console.log(responsePayload)
         }
   
     </script>
