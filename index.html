@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="signinDiv"></div>
+    <p id="profile"></p>
     <script>
         window.onload = function () {
             google.accounts.id.initialize({
@@ -25,6 +26,15 @@
 
         function handleCredentialResponse(response){
             console.log(response)
+            if(response.credential){
+                let jwt = response.credential
+                let user = JSON.parse(atob(jwt.split(".")[1]))
+                console.log(user)
+                document.getElementById('profile').innerHTML = `
+                    <h1>Your name is: ${user.name}</h1><br>
+                    <h2>Your email is: ${user.email}</h2><br>
+                `
+            }
         }
   
     </script>
