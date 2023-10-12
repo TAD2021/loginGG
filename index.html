@@ -8,35 +8,30 @@
 </head>
 <body>
     <button id="google-login-button">Login with Google</button>
+    <div id="signinDiv"></div>
     <script>
+        google.accounts.id.renderButton(document.getElementById("signinDiv"), {
+            theme: 'outline',
+            size: 'large',
+            click_listener: onClickHandler
+        });
+
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: '856955858662-9vs0151os9g1uni6pfmafe0h35ugnv94.apps.googleusercontent.com',
-                callback: handleCredentialResponse,
+                callback: handleCredentialResponse
             });
+            google.accounts.id.prompt();
         };
 
-        document.getElementById('google-login-button').addEventListener('click', function() {
-            google.accounts.id.prompt({
-                callback: handleCredentialResponse,
-                prompt_parent_id: 'google-one-tap-container',
-                response_type: 'code',
-                client_id: '856955858662-9vs0151os9g1uni6pfmafe0h35ugnv94.apps.googleusercontent.com'
-            });
-        });
-
-        function handleCredentialResponse(response) {
-            if (response.credential) {
-                // User is signed in, use the credential object for authentication
-                const credential = response.credential;
-                // Send the credential to your server for further verification and user authentication
-                // ...
-                console.log(response)
-            } else {
-                // No credential available, user is not signed in
-                // ...
-            }
+        function handleCredentialResponse(response){
+            console.log(response)
         }
+        
+        function onClickHandler(){
+            console.log("Sign in with Google button clicked...")
+        }
+  
     </script>
 </body>
 </html>
